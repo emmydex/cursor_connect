@@ -4,7 +4,7 @@ canvas.width = canvas.offsetWidth;
 canvas.height = canvas.offsetHeight;
 const ctx = canvas.getContext('2d');
 const dots = [];
-const arrayColors = ['#eee' '#545454', '#596d91', '#bb5a68' '#696541'];
+const arrayColors = ['#eee', '#545454', '#596d91', '#bb5a68', '#696541'];
 
 for (let index = 0; index < 50; index++) {
     dots.push({
@@ -16,10 +16,11 @@ for (let index = 0; index < 50; index++) {
 }
 
 const drawDots = () => {
-    dots.forEach(dot =>{
-        ctx.fillstyle = dot.color;
+    dots.forEach(dot => {
+        ctx.fillStyle = dot.color;
         ctx.beginPath();
         ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI*2);
+        ctx.fill();
     })
 }
 drawDots();
@@ -31,8 +32,8 @@ banner.addEventListener('mousemove', (event) => {
         y: event.pageY - banner.getBoundingClientRect().top
     }
     dots.forEach(dot => {
-        let distance = Math.sqrt((mouse.x - dot.x) **2 + (mouse.y - dot.y) ** 2);
-        if(distance < 300){
+        let distance = Math.sqrt((mouse.x - dot.x) ** 2 + (mouse.y - dot.y) ** 2);
+        if (distance < 300) {
             ctx.strokeStyle = dot.color;
             ctx.lineWidth = 1;
             ctx.beginPath();
